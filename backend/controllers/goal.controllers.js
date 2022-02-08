@@ -8,7 +8,11 @@ const getGoals = (req, res) => {
 // @desc    create goal
 // @route   POST /api/goals
 // @access  Private
-const createGoal = (req, res) => {
+const setGoal = (req, res) => {
+  if (!req.body.text) {
+    res.status(400);
+    throw new Error('Please add a text field');
+  }
   res.status(200).json({ message: 'post a new goal' });
 };
 
@@ -30,7 +34,7 @@ const deleteGoal = (req, res) => {
 
 module.exports = {
   getGoals,
-  createGoal,
+  setGoal,
   updateGoal,
   deleteGoal,
 };
